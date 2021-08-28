@@ -37,7 +37,7 @@ void successful_input() {
 
 // now for polymorphism variant
 namespace polyvariant {
-using namespace Pssst;
+using namespace pssst;
 
 struct Width: strong<int,Width>, Out<Width>{};
 struct Height: strong<int,Height>, Out<Height>{};
@@ -131,7 +131,6 @@ void testComposite(){
 	draw(w,out);
 	ASSERT_EQUAL("{ circle:42,rectangle:4,2,circle:4,an_int:42,string:a c string, }",out.str());
 }
-
 
 }
 

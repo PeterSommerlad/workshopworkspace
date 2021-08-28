@@ -6,24 +6,6 @@
 #include <string>
 using namespace std::string_literals;
 
-struct bla{
-	int computeresult(int i) const {
-		return i;
-	}
-	void tunix() {
-		computeresult(42);
-	}
-	bla & operator=(bla const &) & = default;
-};
-
-void testbla(){
-	bla  b { };
-	b.computeresult(5);
-	b.tunix();
-	bla{}.tunix();
-	b = bla{};
-	(bla{} = b);
-}
 std::string fizzbuzz(int const &i) {
 	std::string result{}; // "value/default initialization"
 	if(0 == i % 3) result += "fizz";
