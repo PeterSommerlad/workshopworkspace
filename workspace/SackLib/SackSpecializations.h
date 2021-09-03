@@ -5,10 +5,14 @@
 template <typename T> class Sack; // forward declaration
 
 template <typename T>
-struct Sack<T*>
-{
-	~Sack()=delete;
-};
+struct Sack<T*>; // simpler prevent use
+//{
+//	~Sack()=delete;
+//};
+
+template<>
+struct Sack<bool>;
+
 //-----
 #include <vector>
 #include <string>

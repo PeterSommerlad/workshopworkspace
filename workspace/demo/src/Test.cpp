@@ -43,14 +43,14 @@ void demoMakeUnique(){
 
 
 
-void thisIsATest() {
+void testFizzBuzzWithZero() {
 	ASSERTM("start writing tests", false);	
 }
 
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s { };
 	//TODO add your test here
-	s.push_back(CUTE(thisIsATest));
+	s.push_back(CUTE(testFizzBuzzWithZero));
 	s.push_back(CUTE(testAbsMacroPositive));
 	s.push_back(CUTE(testAbsMacroNegative));
 	s.push_back(CUTE(testAbsMacroZero));

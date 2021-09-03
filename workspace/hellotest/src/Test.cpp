@@ -9,7 +9,7 @@
 void createDefaultCounterIsZero() {
 	std::ostringstream out{};
 	sayhello(out);
-	ASSERT_EQUAL("Hello World\n",out.str());
+	ASSERT_EQUAL("Hello, World\n",out.str());
 }
 
 bool runAllTests(int argc, char const *argv[]) {

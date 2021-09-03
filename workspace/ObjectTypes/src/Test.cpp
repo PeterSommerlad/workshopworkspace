@@ -25,12 +25,11 @@ using screen=std::ostream;
 
 
 struct drawable {
-	virtual ~drawable()=0;
+	virtual ~drawable()=default;
 	virtual void draw(screen& on)=0;
 protected:
 	drawable& operator=(drawable&&)noexcept=delete; // prohibit move and copy
 };
-drawable::~drawable()=default;
 using widget=std::unique_ptr<drawable>;
 using widgets=std::vector<widget>;
 
@@ -99,7 +98,9 @@ void testCircle(){
 void testComposite(){
 	std::ostringstream out{};
 	composite c{};
-	c.add(std::make_unique<circle>(Radius{42}));
+	widget ptr {std::make_unique<circle>(Radius{42})};
+	c.add(std::move(ptr));
+	ASSERT_EQUAL(nullptr,ptr);
 	c.add(std::make_unique<rect>(Width{4},Height{2}));
 	c.add(std::make_unique<circle>(Radius{4}));
 	c.draw(out);
@@ -112,6 +113,7 @@ void testRefComposite(){
 	circle c2{Radius{4}};
 	refcomposite c{};
 	c.add(c1);c.add(r1);c.add(c2);
+	//c.add(std::ref(circle{Radius{1}})); // won't compile
 	c.draw(out);
 	ASSERT_EQUAL("{ circle:42rectangle:4,2circle:4 }",out.str());
 }
@@ -279,7 +281,7 @@ void testComposite(){
 	c.add("a c string");
 	widget w{c};
 	draw(w,out);
-	ASSERT_EQUAL("{ circle:42,rectangle:4,2,circle:4,an_int:42,a c string, }",out.str());
+	ASSERT_EQUAL("{ circle:42,rectangle:4,2,circle:4,an_int:42,string:a c string, }",out.str());
 }
 struct ScreenItems{
 	void add(widget w){

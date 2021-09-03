@@ -49,7 +49,7 @@
                                     								
                                 </option>
                                 								
-                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="macosx.cpp.link.option.paths.1402909563" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="macosx.cpp.link.option.paths.1402909563" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/hellolib/Debug}&quot;"/>
                                     								

@@ -16,6 +16,10 @@ void testSackWithPointersShouldntCompile(){
 	//Sack<int *> shouldNotCompile;
 	Sack<char const *> shouldkeepStrings;
 }
+void testSackBoolDoesNotCompile(){
+	//Sack<bool> shouldNotCompile{};
+}
+
 
 
 
@@ -42,6 +46,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testmakeSackInt));
 	s.push_back(CUTE(testmakeSackCharPtr));
 	s.push_back(CUTE(testSackWithPointersShouldntCompile));
+	s.push_back(CUTE(testSackBoolDoesNotCompile));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

@@ -7,7 +7,7 @@
 #include <iterator>
 
 template <typename T,
-    template<typename...> typename container=std::vector>
+    template<typename...> typename container = std::vector>
 class Sack
 {
 	using SackType=container<T>;
@@ -43,6 +43,10 @@ public:
 		return std::vector<Elt>(theSack.begin(),theSack.end());
 	}
 };
+template <typename ITER>
+Sack(ITER b, ITER e) -> Sack<typename std::iterator_traits<ITER>::value_type>;
+
+
 template <typename T>
 Sack<T> makeSack(std::initializer_list<T> list){
 	return Sack<T>{list};
@@ -65,7 +69,7 @@ template <typename T>
 Sack<T> makeSack3(std::initializer_list<T> list){
 	return Sack<T>(list.begin(),list.end());
 }
-template <template<typename...> class container,typename T>
+template <template<typename...> typename container,typename T>
 Sack<T,container> makeOtherSack(std::initializer_list<T> list){
 	return Sack<T,container>{list};
 }

@@ -7,7 +7,7 @@ template <typename T>
 class Sack
 {
 	using SackType=std::vector<T>;
-	using size_type=typename SackType::size_type;
+	using size_type= typename SackType::size_type;
 	SackType theSack{};
 
 	inline static std::mt19937 randengine{std::random_device{}()};

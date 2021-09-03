@@ -28,8 +28,8 @@ void defaultConstructorStillWorks() {
 }
 
 void demoInheritingClassTemplateNameResolutionProblem() {
-	std::vector<int> v{3,1,4,1,5,9,2,6};
-	Sack<int> asack{v.begin(),v.end()};
+	std::vector v{3,1,4,1,5,9,2,6};
+	Sack asack(v.begin(),v.end());
 	ASSERT_EQUAL(v.size(),asack.size());
 }
 
@@ -64,7 +64,7 @@ void asVectorTest(){
 }
 
 void createSackFromInitializerList(){
-	Sack<char> csack{'a','b','c'};
+	Sack csack{'a','b','c'};
 	ASSERT_EQUAL(3,csack.size());
 }
 
